@@ -10,14 +10,6 @@ const errorHandler = require('./middleware/errorHandler');
 const { logger, errorLogger } = require('./middleware/logger');
 const { limiter } = require('./middleware/limiter');
 
-// const allowedCors = {
-//   origin: [
-//     'http://localhost:3000',
-//     'http://localhost:3001',
-//     'https://mnamer.students.nomoredomainssbs.ru',
-//   ],
-// };
-
 const app = express();
 const { PORT = 3001 } = process.env;
 const { router } = require('./routes');
@@ -32,12 +24,6 @@ app.options('*', cors());
 
 app.use(limiter);
 app.use(logger);
-
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Server will crash now');
-  }, 0);
-});
 
 app.use('/', router);
 
