@@ -1,7 +1,7 @@
 # FINAL PROJECT - PRACTICUM - NEWS API 
 
 In this project we will create an independent app working on a server about news like a newsfeed.
-
+api.namernews.students.nomoredomainssbs.ru, namernews.students.nomoredomainssbs.ru, www.namernews.students.nomoredomainssbs.ru
 
 # STAGE I  
 
