@@ -65,7 +65,14 @@ const getUser = (req, res, next) => {
     // })
 };
 
+const getAllUsers = (req, res, next) => {
+  User.find({})
+    .then((users) => res.status(200).send({ data: users })) // .send(users))
+    .catch(next);
+};
+
 module.exports = {
+  getAllUsers,
   getUser,
   login,
   createUser,
