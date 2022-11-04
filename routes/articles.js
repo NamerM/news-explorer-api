@@ -5,13 +5,13 @@ const {
   deleteArticle,
 } = require('../controllers/articles');
 const {
-  validateCardBody,
+  validateArticleBody,
   validateObjectId,
 } = require('../middleware/validators');
 
 router.get('/articles', getAllArticles);
 router.delete('/articles/:articleId', validateObjectId, deleteArticle);
-router.post('/articles', validateCardBody, createArticle);
+router.post('/articles', validateArticleBody, createArticle);
 
 module.exports = {
   articleRouter: router,

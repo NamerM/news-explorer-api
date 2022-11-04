@@ -70,23 +70,35 @@ const validateArticleBody = celebrate({
       .messages({
         'string.min': 'The minimum length of the "name" field is 2',
         'string.max': 'The maximum length of the "name" field is 30',
-        'string.empty': 'The "keyword" field can not be left empty',
+        'string.required': 'The "keyword" field can not be left empty',
       }),
-    title: Joi.string().required().min(4).max(30)
+    title: Joi.string().required().min(4).max(40)
       .messages({
         'string.min': 'The minimum length of the "name" field is 4',
-        'string.max': 'The maximum length of the "name" field is 30',
-        'string.empty': 'The "title" field can not be left empty',
+        'string.max': 'The maximum length of the "name" field is 40',
+        'string.required': 'The "title" field can not be left empty',
+      }),
+    text: Joi.string().required()
+      .messages({
+        'string.required': 'The "text" field can not be left empty',
+      }),
+    date: Joi.string().required()
+      .messages({
+        'string.required': 'The "text" field can not be left empty',
+      }),
+    source: Joi.string().required()
+      .messages({
+        'string.required': 'The "text" field can not be left empty',
       }),
     link: Joi.string().required().custom(validateURL)
       .messages({
         'string.uri': 'Invalid type of URL',
-        'string.empty': '"Link" field can not be left empty',
+        'string.required': '"Link" field can not be left empty',
       }),
     image: Joi.string().required().custom(validateURL)
       .messages({
         'string.uri': 'Invalid type of URL',
-        'string.empty': '"Link" field can not be left empty',
+        'string.required': '"Link" field can not be left empty',
       }),
   }),
 });
