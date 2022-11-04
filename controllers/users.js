@@ -59,23 +59,10 @@ const getUser = (req, res, next) => {
     .then((user) => {
       res.status(200).send({ data: user });
     })
-    .catch(next);
-};
-
-const updateUserData = (req, res, next) => {
-  const { body } = req;
-  const id = req.user._id;
-
-  User.findByIdAndUpdate(
-    id,
-    body,
-    { new: true, runValidators: true },
-  )
-    .orFail(() => {
-      throw new NotFoundError('Please update user info fields');
+    //.catch(next);
+    .catch(() => {
+      console.log("Authorization Required");
     })
-    .then((user) => res.send({ data: user }))
-    .catch(next);
 };
 
 module.exports = {
