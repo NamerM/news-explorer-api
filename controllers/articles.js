@@ -37,17 +37,17 @@ const createArticle = (req, res, next) => {
 };
 
 const deleteArticle = (req, res, next) => {
-  const { cardId } = req.params;
-  Card.findById(cardId)
+  const { articleId } = req.params;
+  Article.findById(articleId)
     .orFail(() => {
       throw new NotFoundError('Card Not Found!');
     })
-    .then((card) => {
-      if (!card.owner.equals(req.user._id)) {
+    .then((article) => {
+      if (!article.owner.equals(req.user._id)) {
         next(new ForbiddenError('This is not your card to delete!'));
       } else {
-        Card.findByIdAndRemove(cardId)
-          .then((deletecard) => res.send(deletecard));
+        Article.findByIdAndRemove(articleId)
+          .then((deleteArticle) => res.send(deleteArticle));
       }
     })
     .catch(next);

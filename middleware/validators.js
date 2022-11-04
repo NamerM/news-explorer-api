@@ -54,7 +54,7 @@ const validateUserBody = celebrate({
 // Validate Article Id
 const validateObjectId = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().required().custom((value, helpers) => {
+    articleId: Joi.string().required().custom((value, helpers) => {
       if (ObjectId.isValid(value)) {
         return value;
       }

@@ -2,6 +2,7 @@
 
 In this project we will create an independent app working on a server about news like a newsfeed.
 
+
 # STAGE I  
 
 Backend structure built on Stage I, .
