@@ -41,36 +41,17 @@ const validateUserBody = celebrate({
         'string.required': 'The "password" field must be filled',
         'string.min': 'The Password must be at least 6 characters long',
       }),
+      name: Joi.string().required().min(2).max(30)
+        .messages({
+          'string.min': 'The minimum length of the "name" field is 2',
+          'string.max': 'The maximum length of the "name" field is 30',
+          'string.empty': 'The "name" field can not be left empty',
+        }),
   }),
 });
 
-// Validate Profile
-const validateProfile = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30)
-      .messages({
-        'string.min': 'The minimum length of the "name" field is 2',
-        'string.max': 'The maximum length of the "name" field is 30',
-        'string.empty': 'The "name" field can not be left empty',
-      }),
-    about: Joi.string().required().min(2).max(30)
-      .messages({
-        'string.min': 'The minimum length of the "name" field is 2',
-        'string.max': 'The maximum length of the "name" field is 30',
-        'string.empty': 'The "about" field can not be left empty',
-      }),
-  }),
-});
 
-// Validate Avatar
-const validateAvatar = celebrate({
-  body: Joi.object().keys({
-    avatar: Joi.string().required().custom(validateURL)
-      .message('The "avatar" address field must be filled'),
-  }),
-});
-
-// Validate card Id?
+// Validate Article Id
 const validateObjectId = celebrate({
   params: Joi.object().keys({
     cardId: Joi.string().required().custom((value, helpers) => {
@@ -82,28 +63,27 @@ const validateObjectId = celebrate({
   }),
 });
 
-// Validateuser Id?
-const validateUserId = celebrate({
-  params: Joi.object().keys({
-    id: Joi.string().required().custom((value, helpers) => {
-      if (ObjectId.isValid(value)) {
-        return value;
-      }
-      return helpers.message('Invalid Id');
-    }),
-  }),
-});
-
-// validate cards
-const validateCardBody = celebrate({
+// validate articles
+const validateArticleBody = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30)
+    keyword: Joi.string().required().min(2).max(30)
       .messages({
         'string.min': 'The minimum length of the "name" field is 2',
         'string.max': 'The maximum length of the "name" field is 30',
-        'string.empty': 'The "name" field can not be left empty',
+        'string.empty': 'The "keyword" field can not be left empty',
+      }),
+    title: Joi.string().required().min(4).max(30)
+      .messages({
+        'string.min': 'The minimum length of the "name" field is 4',
+        'string.max': 'The maximum length of the "name" field is 30',
+        'string.empty': 'The "title" field can not be left empty',
       }),
     link: Joi.string().required().custom(validateURL)
+      .messages({
+        'string.uri': 'Invalid type of URL',
+        'string.empty': '"Link" field can not be left empty',
+      }),
+    image: Joi.string().required().custom(validateURL)
       .messages({
         'string.uri': 'Invalid type of URL',
         'string.empty': '"Link" field can not be left empty',
@@ -113,10 +93,7 @@ const validateCardBody = celebrate({
 
 module.exports = {
   validateAuthentication,
-  validateProfile,
-  validateAvatar,
   validateUserBody,
   validateObjectId,
-  validateCardBody,
-  validateUserId,
+  validateArticleBody,
 };

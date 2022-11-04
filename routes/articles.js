@@ -3,16 +3,16 @@ const {
   getAllArticles,
   createArticle,
   deleteArticle,
-} = require('../controllers/cards');
+} = require('../controllers/articles');
 const {
   validateCardBody,
   validateObjectId,
 } = require('../middleware/validators');
 
-router.get('/cards', getAllArticles);
-router.delete('/cards/:cardId', validateObjectId, deleteArticle);
-router.post('/cards', validateCardBody, createArticle);
+router.get('/articles', getAllArticles);
+router.delete('/articles/:articleId', validateObjectId, deleteArticle);
+router.post('/articles', validateCardBody, createArticle);
 
 module.exports = {
-  cardRouter: router,
+  articleRouter: router,
 };
