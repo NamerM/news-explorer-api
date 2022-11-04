@@ -59,10 +59,10 @@ const getUser = (req, res, next) => {
     .then((user) => {
       res.status(200).send({ data: user });
     })
-    .catch(next);
-    // .catch(() => {
-    //   console.log("Authorization Required");
-    // })
+    // .catch(next);
+    .catch((err) => {
+      castError(req, res, err);
+    });
 };
 
 const getAllUsers = (req, res, next) => {
