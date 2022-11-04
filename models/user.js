@@ -5,7 +5,6 @@ const { EMAIL_REGEXP } = require('../utils/regex');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: 'Jacques Cousteau',
     required: true,
     minlength: 2,
     maxlength: 30,
@@ -43,9 +42,9 @@ userSchema.statics.findUserByCredentials = function (email, password) {
     });
 };
 
-userSchema.methods.toJSON = function () {
-  const { password, ...obj } = this.toObject();
-  return obj;
-};
+// userSchema.methods.toJSON = function () {
+//   const { password, ...obj } = this.toObject();
+//   return obj;
+// };
 
 module.exports = mongoose.model('user', userSchema);
