@@ -25,7 +25,7 @@ app.options('*', cors());
 app.use(limiter);
 app.use(logger);
 
-app.use(router);
+app.use('/', router);
 
 app.use(errorLogger);
 app.use(errors());
