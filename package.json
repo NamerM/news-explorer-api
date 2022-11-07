@@ -1,5 +1,5 @@
 {
-  "name": "News Explorer API",
+  "name": "news-explorer-api",
   "version": "1.0.0",
   "description": "`/data` — JSON files to temporarily emulate database integration.",
   "main": "app.js",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/NamerM/news-explorer-api.git"
   },
-  "author": "Melih Namer",
+  "author": "Melih Namer mnamer12@outlook.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NamerM/news-explorer-api/issues"
