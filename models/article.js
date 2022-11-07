@@ -20,7 +20,7 @@ const articleSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: String, //Date
+    type: String, // Date
     required: true,
   },
   link: {

@@ -50,7 +50,6 @@ const validateUserBody = celebrate({
   }),
 });
 
-
 // Validate Article Id
 const validateObjectId = celebrate({
   params: Joi.object().keys({

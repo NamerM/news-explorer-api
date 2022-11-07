@@ -1,8 +1,8 @@
 require('dotenv').config({ path: '../../.env' });
 
-const { JWT_SECRET } = require('../utils/config');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../utils/config');
 const User = require('../models/user');
 const ExistingError = require('../errors/ExistingError');
 const BadRequestError = require('../errors/BadRequestError');

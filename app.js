@@ -1,5 +1,5 @@
 require('dotenv').config({ path: '../.env' });
-//const JWT_SECRET = require('./utils/config');
+// const JWT_SECRET = require('./utils/config');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -33,5 +33,5 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App is available  on port  ${PORT}...`);
-  //console.log(JWT_SECRET);
+  // console.log(JWT_SECRET);
 });
