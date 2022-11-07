@@ -1,8 +1,8 @@
-require('dotenv').config({ path: '../../.env' });
+require('dotenv').config({ path: '../.env' });
 
-const { JWT_SECRET } = require('../utils/config');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../utils/config');
 const User = require('../models/user');
 const ExistingError = require('../errors/ExistingError');
 const BadRequestError = require('../errors/BadRequestError');
@@ -14,7 +14,7 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
-      res.send({  token }); //data: user.toJSON(),
+      res.send({ token }); // data: user.toJSON(),
     })
     .catch(() => {
       next(new UnauthorizedError('Login information is incorrect, check either email or password'));
@@ -37,7 +37,11 @@ const createUser = (req, res, next) => {
       email,
       password: hash,
     }))
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) => res.status(201).send({
+      name: user.name,
+      email: user.email,
+      _id: user._id,
+    }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError(err.message));
