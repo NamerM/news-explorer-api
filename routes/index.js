@@ -12,6 +12,6 @@ router.post('/signin', validateAuthentication, login);
 router.use(auth);
 router.use('/', userRouter);
 router.use('/', articleRouter);
-router.use(nonExisted);
+router.use('*', nonExisted);
 
 module.exports = { router };
