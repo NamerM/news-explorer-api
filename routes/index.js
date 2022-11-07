@@ -14,6 +14,4 @@ router.use('/', userRouter);
 router.use('/', articleRouter);
 router.use('/', nonExisted);
 
-module.exports = {
-  router,
-};
+module.exports = router;
