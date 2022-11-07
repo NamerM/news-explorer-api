@@ -12,7 +12,7 @@ const { limiter } = require('./middleware/limiter');
 
 const app = express();
 const { PORT = 3001 } = process.env;
-const router = require('./routes');
+const { router } = require('./routes');
 
 mongoose.connect(MONGO_URL);
 
