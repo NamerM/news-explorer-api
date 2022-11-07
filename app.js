@@ -25,7 +25,7 @@ app.options('*', cors());
 app.use(limiter);
 app.use(logger);
 
-app.use('/', router);
+app.use(router);
 
 app.use(errorLogger);
 app.use(errors());
@@ -33,5 +33,4 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App is available  on port  ${PORT}...`);
-  // console.log(JWT_SECRET);
 });
