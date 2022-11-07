@@ -1,8 +1,8 @@
 require('dotenv').config({ path: '../../.env' });
 
+const { JWT_SECRET } = require('../utils/config');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../utils/config');
 const User = require('../models/user');
 const ExistingError = require('../errors/ExistingError');
 const BadRequestError = require('../errors/BadRequestError');
@@ -37,7 +37,11 @@ const createUser = (req, res, next) => {
       email,
       password: hash,
     }))
-    .then((user) => res.status(201).send({ data: user }))
+    .then((user) => res.status(201).send({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError(err.message));
@@ -59,14 +63,14 @@ const getUser = (req, res, next) => {
     .catch(next);
 };
 
-const getAllUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => res.status(200).send({ data: users })) // .send(users))
-    .catch(next);
-};
+// const getAllUsers = (req, res, next) => {
+//   User.find({})
+//     .then((users) => res.status(200).send({ data: users })) // .send(users))
+//     .catch(next);
+// };
 
 module.exports = {
-  getAllUsers,
+  // getAllUsers,
   getUser,
   login,
   createUser,
