@@ -6,7 +6,7 @@ const NotFoundError = require('../errors/NotFoundError');
 const getAllArticles = (req, res, next) => {
   const owner = req.user._id
 
-  Article.find({ owner })
+  Article.find({ ownere })
     .then((articles) => res.status(200).send({ data: articles }))
     .catch((err) => {
       next(err);
@@ -17,7 +17,7 @@ const createArticle = (req, res, next) => {
   const {
     keyword, title, text, date, source, link, image,
   } = req.body;
-  const id = req.user._id;
+  const owner = req.user._id;
 
   Article.create({
     keyword,
@@ -27,7 +27,7 @@ const createArticle = (req, res, next) => {
     source,
     link,
     image,
-    owner: id,
+    owner
   })
     .then((article) => res.status(201).send({ data: article }))
     .catch((err) => {
