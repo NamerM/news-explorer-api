@@ -71,10 +71,9 @@ const validateArticleBody = celebrate({
         'string.max': 'The maximum length of the "name" field is 30',
         'string.required': 'The "keyword" field can not be left empty',
       }),
-    title: Joi.string().required().min(4).max(40)
+    title: Joi.string().required().min(4)
       .messages({
         'string.min': 'The minimum length of the "name" field is 4',
-        'string.max': 'The maximum length of the "name" field is 40',
         'string.required': 'The "title" field can not be left empty',
       }),
     text: Joi.string().required()
